@@ -27,6 +27,10 @@ const apiLimiter = rateLimit({
 // Use S3 routes with rate limiting
 app.use('/s3', s3Routes, apiLimiter);
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'index.html',));
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
